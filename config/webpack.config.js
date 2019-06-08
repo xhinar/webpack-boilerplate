@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const paths = require('./paths');
-console.log('zzz1', paths.servedPath)
 
 module.exports = {
   entry: {
@@ -69,13 +68,13 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css"
     }),
-    // new WorkboxPlugin.GenerateSW({
-    //   // these options encourage the ServiceWorkers to get in there fast
-    //   // and not allow any straggling "old" SWs to hang around
-    //   clientsClaim: true,
-    //   skipWaiting: true,
-    //   cacheId: 'dmiPwa'
-    // })
+    new WorkboxPlugin.GenerateSW({
+      // these options encourage the ServiceWorkers to get in there fast
+      // and not allow any straggling "old" SWs to hang around
+      clientsClaim: true,
+      skipWaiting: true,
+      cacheId: 'dmiPwa'
+    })
   ],
   devtool: 'source-map',
   externals: [],

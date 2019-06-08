@@ -1,5 +1,5 @@
 import {registerApplication, start} from 'single-spa'
-// import './serviceworker'
+import './serviceworker'
 
 function pathPrefix(prefix) {
   return function(location) {
