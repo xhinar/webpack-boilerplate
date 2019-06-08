@@ -6,6 +6,10 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const paths = require('./paths');
 
+const fs  = require('fs');
+const lessToJs = require('less-vars-to-js');
+const themeVariables = lessToJs(fs.readFileSync(paths.antdTheme, 'utf8'));
+
 module.exports = {
   entry: {
     // Set the single-spa config as the project entry point
@@ -41,7 +45,31 @@ module.exports = {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader,
           { loader: "style-loader" },
+          { loader: "css-loader", options: {modules: true} },
+          { loader: "less-loader" },
+        ]
+      },
+      {
+        test: /\.less$/,
+        exclude: /antd.*\.less$/,
+        use: [
+          {loader: "style-loader"},
+          {loader: "css-loader", options: { modules: true } },
+          {loader: "less-loader"},
+        ]
+      },
+      {
+        test: /antd.*\.less$/,
+        use: [
+          { loader: "style-loader" },
           { loader: "css-loader" },
+          { loader: "less-loader",
+            options: {
+              javascriptEnabled: true,
+              modifyVars: themeVariables,
+              root: path.resolve(__dirname, './')
+            }
+          }
         ]
       },
     ],
@@ -54,6 +82,7 @@ module.exports = {
       __dirname,
       'node_modules',
     ],
+    extensions: ['.js', '.jsx', '.less']
   },
   plugins: [
     // A webpack plugin to remove/clean the build folder(s) before building

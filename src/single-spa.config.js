@@ -25,20 +25,14 @@ registerApplication(
   pathPrefix('/home')
 )
 
+registerApplication('antd',
+  () => import('./antd/antd.app.js'),
+  pathPrefix('/antd'));
+
 registerApplication(
   'angularJS',
   () => import ('./angularJS/angularJS.app.js'),
   pathPrefix('/angularJS')
 )
-
-// if ('serviceWorker' in navigator) {
-//   window.addEventListener('load', () => {
-//     navigator.serviceWorker.register('/dist/service-worker.js').then(registration => {
-//       console.log('SW registered: ', registration);
-//     }).catch(registrationError => {
-//       console.log('SW registration failed: ', registrationError);
-//     });
-//   });
-// }
 
 start()
