@@ -15,6 +15,7 @@ module.exports = {
     // Set the single-spa config as the project entry point
     // 'single-spa.config': 'single-spa.config.js',
     'single-spa.config': paths.appSingleSpaJs,
+    // 'single-spa.config': paths.appSideMenu,
   },
   output: {
     // publicPath: '/dist/',
@@ -43,9 +44,13 @@ module.exports = {
       {
         // Webpack style loader added so we can use materialize
         test: /\.css$/,
+        // use: [MiniCssExtractPlugin.loader, "css-loader"]
         use: [MiniCssExtractPlugin.loader,
-          { loader: "style-loader" },
-          { loader: "css-loader", options: {modules: true} },
+          // MiniCSSExtractPlugin extracts CSS into separate files and adds the assets to webpack's asset map.
+          // Style-Loader, on the other hand, embeds the CSS as a string into the JS bundle itself and then, at runtime, injects it into the DOM with a style tag.
+          // These methods conflict.
+          // { loader: "style-loader" },
+          { loader: "css-loader", options: { modules: true } },
           { loader: "less-loader" },
         ]
       },
@@ -71,6 +76,14 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       },
     ],
   },
