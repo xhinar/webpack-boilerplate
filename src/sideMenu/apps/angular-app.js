@@ -1,21 +1,10 @@
-import * as singleSpa from 'single-spa';
-import { matchingPathname, runScript } from './utils';
-import eventBus from '../utils/eventBus';
-
-const loadAngularApp = async () => {
-  await runScript('http://localhost:5001/inline.bundle.js');
-  await runScript('http://localhost:5001/polyfills.bundle.js');
-  await runScript('http://localhost:5001/styles.bundle.js');
-  await runScript('http://localhost:5001/vendor.bundle.js');
-  await runScript('http://localhost:5001/main.bundle.js');
-  return window.angularApp;
-};
+import { registerApplication } from 'single-spa'
+import { pathPrefix } from './utils'
 
 export const registerAngularApp = () => {
-  singleSpa.registerApplication(
-    'angular-app',
-    loadAngularApp,
-    matchingPathname(['/angular', '/']),
-    { eventBus }
-  );
-};
+  registerApplication(
+    'angularJS',
+    () => import ('../../angularJS/angularJS.app.js'),
+    pathPrefix('/angularJS')
+  )
+}

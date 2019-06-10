@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Layout, Menu, Icon } from 'antd';
-import 'antd/dist/antd.less';
-import logo from './static/img/react.svg';
 import './App.css';
+import 'antd/dist/antd.css';
+import logo from './static/img/react.svg';
+
 
 const { Header, Sider, Content } = Layout;
 const navigateTo = url => window.history.pushState(null, null, url);
@@ -18,11 +19,11 @@ function App() {
             <Icon type="home" />
             <span>Home</span>
           </Menu.Item>
-          <Menu.Item key="2" onClick={() => navigateTo('/react')}>
+          <Menu.Item key="2" onClick={() => navigateTo('/antd')}>
             <Icon type="dot-chart" />
-            <span>React</span>
+            <span>AntD</span>
           </Menu.Item>
-          <Menu.Item key="3" onClick={() => navigateTo('/angular')}>
+          <Menu.Item key="3" onClick={() => navigateTo('/angularJS')}>
             <Icon type="pie-chart" />
             <span>Angular</span>
           </Menu.Item>
@@ -39,7 +40,7 @@ function App() {
           <h1 className="App-title">Welcome to React Portal</h1>
         </Header>
         <Content className="content">
-          <div id="react-app" />
+          <div id="antd-app" />
           <div id="angular-app" />
         </Content>
       </Layout>
