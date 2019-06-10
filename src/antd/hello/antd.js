@@ -19,7 +19,7 @@ class HelloAntD extends React.Component {
 
     return (
       <div>
-        <h1 className={styles.font_red_30px}>{message}</h1>
+        <h4 className="font_red_30px">{message}</h4>
         <Button
           type="primary"
           icon="check"
@@ -31,7 +31,8 @@ class HelloAntD extends React.Component {
             Click me
         </Button>
         <Icon type="paycircle" />
-        <h2>{clicks} click{clicks == 1 ? '' : 's'}</h2>
+        <br />
+        <h5>{clicks} click{clicks == 1 ? '' : 's'}</h5>
       </div>
     );
   }

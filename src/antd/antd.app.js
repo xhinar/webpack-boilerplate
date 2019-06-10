@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import singleSpaReact from 'single-spa-react';
-import Home from './root.component.js';
+import AntD from './root.component.js';
 
 const reactLifecycles = singleSpaReact({
   React,
   ReactDOM,
-  rootComponent: Home,
+  rootComponent: AntD,
   domElementGetter,
   suppressComponentDidCatchWarning: true
   //https://reactjs.org/docs/hooks-faq.html
@@ -28,10 +28,12 @@ export const unmount = [
 
 function domElementGetter() {
 	// Make sure there is a div for us to render into
-	let el = document.getElementById('main-content');
+	// let el = document.getElementById('main-content');
+	let el = document.getElementById('antd-app');
 	if (!el) {
 		el = document.createElement('div');
-		el.id = 'main-content';
+		// el.id = 'main-content';
+		el.id = 'antd-app';
 		document.body.appendChild(el);
 	}
 

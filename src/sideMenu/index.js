@@ -1,16 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { start } from 'single-spa'
+// import '../serviceworker'
 import './index.css'
 import App from './App'
-import { start } from 'single-spa'
+
+
 // import { registerReactApp } from "./apps/react-app";
 // import { registerAngularApp } from "./apps/angular-app";
-import { registerNavBarApp } from "./apps/navBar-app"
+import { registerAntDApp } from "./apps/antd-app"
+import { registerAngularApp } from "./apps/angular-app";
 
-ReactDOM.render(<App/>, document.getElementById('app'))
+ReactDOM.render(<App/>, document.getElementById('root'))
 
 // registerReactApp();
 // registerAngularApp();
-// registerNavBarApp
+registerAntDApp()
+registerAngularApp()
 
-// start();
+start()

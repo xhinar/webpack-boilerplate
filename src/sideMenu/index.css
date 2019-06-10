@@ -4,6 +4,6 @@ body {
   font-family: sans-serif;
 }
 
-#app {
+#root {
   height: 100%;
 }

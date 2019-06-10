@@ -13,9 +13,8 @@ const themeVariables = lessToJs(fs.readFileSync(paths.antdTheme, 'utf8'));
 module.exports = {
   entry: {
     // Set the single-spa config as the project entry point
-    // 'single-spa.config': 'single-spa.config.js',
-    'single-spa.config': paths.appSingleSpaJs,
-    // 'single-spa.config': paths.appSideMenu,
+    // 'single-spa.config': paths.appSingleSpaJs,
+    'single-spa.config': paths.appSideMenu,
   },
   output: {
     // publicPath: '/dist/',
@@ -42,19 +41,6 @@ module.exports = {
         ]
       },
       {
-        // Webpack style loader added so we can use materialize
-        test: /\.css$/,
-        // use: [MiniCssExtractPlugin.loader, "css-loader"]
-        use: [MiniCssExtractPlugin.loader,
-          // MiniCSSExtractPlugin extracts CSS into separate files and adds the assets to webpack's asset map.
-          // Style-Loader, on the other hand, embeds the CSS as a string into the JS bundle itself and then, at runtime, injects it into the DOM with a style tag.
-          // These methods conflict.
-          // { loader: "style-loader" },
-          { loader: "css-loader", options: { modules: true } },
-          { loader: "less-loader" },
-        ]
-      },
-      {
         test: /\.less$/,
         exclude: /antd.*\.less$/,
         use: [
@@ -75,6 +61,24 @@ module.exports = {
               root: path.resolve(__dirname, './')
             }
           }
+        ]
+      },
+      {
+        // Webpack style loader added so we can use materialize
+        test: /\.css$/,
+        // use: [MiniCssExtractPlugin.loader, "css-loader"]
+        use: [MiniCssExtractPlugin.loader,
+        //   // MiniCSSExtractPlugin extracts CSS into separate files and adds the assets to webpack's asset map.
+        //   // Style-Loader, on the other hand, embeds the CSS as a string into the JS bundle itself and then, at runtime, injects it into the DOM with a style tag.
+        //   // These methods conflict.
+          // { loader: "style-loader" },
+          // { loader: "css-loader" },
+          { loader: "css-loader",
+            options: {
+              importLoaders: 1,
+              sourceMap: false,
+            }
+          },
         ]
       },
       {
