@@ -31,10 +31,10 @@ export const unmount = [
 // }
 function domElementGetter() {
 	// Make sure there is a div for us to render into
-	let el = document.getElementById('main-content');
+	let el = document.getElementById('home-app');
 	if (!el) {
 		el = document.createElement('div');
-		el.id = 'main-content';
+		el.id = 'home-app';
 		document.body.appendChild(el);
 	}
 
