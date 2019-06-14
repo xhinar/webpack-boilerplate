@@ -4,7 +4,7 @@ import { pathPrefix } from './utils'
 export const registerAngularApp = () => {
   registerApplication(
     'angularJS',
-    () => import ('../../angularJS/angularJS.app.js'),
+    () => import ('./components/angularJS/angularJS.app.js'),
     pathPrefix('/angularJS')
   )
 }

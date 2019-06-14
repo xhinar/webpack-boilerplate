@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import './App.css';
 import 'antd/dist/antd.css';
-import logo from './static/img/react.svg';
+import logo from './assets/img/react.svg';
 
 
 const { Header, Sider, Content } = Layout;
@@ -15,7 +15,7 @@ function App() {
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-          <Menu.Item key="1" onClick={() => navigateTo('/')}>
+          <Menu.Item key="1" onClick={() => navigateTo('/home')}>
             <Icon type="home" />
             <span>Home</span>
           </Menu.Item>
@@ -40,6 +40,7 @@ function App() {
           <h1 className="App-title">Welcome to React Portal</h1>
         </Header>
         <Content className="content">
+          <div id="home-app" />
           <div id="antd-app" />
           <div id="angular-app" />
         </Content>

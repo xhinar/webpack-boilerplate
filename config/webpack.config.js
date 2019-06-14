@@ -14,7 +14,9 @@ module.exports = {
   entry: {
     // Set the single-spa config as the project entry point
     // 'single-spa.config': paths.appSingleSpaJs,
-    'single-spa.config': paths.appSideMenu,
+    // paths.js =>   appSideMenu: resolveApp('src/sideMenu/index.js'),
+    // 'single-spa.config': paths.appSideMenu,
+    'single-spa.config': paths.appIndexJs,
   },
   output: {
     // publicPath: '/dist/',

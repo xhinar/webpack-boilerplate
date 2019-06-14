@@ -41,9 +41,9 @@
   min-height: 280px;
 }
 
-.content > div:first-of-type {
+/* .content > div:first-of-type {
   margin-bottom: 70px;
-}
+} */
 
 .reactLogo {
   height: 60px;

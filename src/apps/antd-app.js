@@ -4,7 +4,7 @@ import { pathPrefix } from './utils'
 export const registerAntDApp = () => {
   registerApplication(
     'antd',
-    () => import('../../antd/antd.app.js'),
+    () => import('./components/antd/antd.app.js'),
     pathPrefix('/antd'))
 }
 
